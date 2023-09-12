@@ -1,0 +1,28 @@
+header{
+    text-align: center;
+    font-size: x-large;
+    font-weight: 200;
+}
+body{
+    text-align: center;
+    align-items: normal;
+    background-color: aquamarine;
+}
+#research{
+    width: 150px;
+    height: 43px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 20px;  
+}
+#sub{
+    width: 83px;
+    height: 43px;
+    text-align: center;
+    border-radius: 10px;
+}
+#g{
+    width: 150px;
+    height: 35px;
+    border-radius: 10px;
+}

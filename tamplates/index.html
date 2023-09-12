@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insurance Charges Prediction</title>
+    <link rel="stylesheet" href="../staticFiles/style.css" />
+  </head>
+
+  <body>
+    <header>Insurance Charges Prediction</header>
+    <div>
+      <form action="{{url_for('predict')}}" method="post">
+        <h3>Age</h3>
+        <input
+          id="g"
+          type="text"
+          name="Age"
+          placeholder="Age"
+          required="required"
+        />
+
+        <h3>Gender</h3>
+        <select name="Gender" id="research" required="required">
+          <option value="1">Male</option>
+          <option value="0">Female</option>
+        </select>
+
+        <h3>BMI</h3>
+        <input
+          id="g"
+          type="text"
+          name="BMI"
+          placeholder="BMI"
+          required="required"
+        />
+
+        <h3>No of children</h3>
+        <input
+          id="g"
+          type="text"
+          name="no. of children"
+          placeholder="no. of children"
+          required="required"
+        />
+
+        <h3>Smoker</h3>
+        <select name="Smoker" id="research" required="required">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+
+        <h3>Region</h3>
+        <select name="Region" id="research" required="required">
+          <option value="0">Northeast</option>
+          <option value="1">Northwest</option>
+          <option value="2">Southeast</option>
+          <option value="3">Southwest</option>
+        </select>
+
+        <br /><br /><button id="sub" type="submit">Prediction</button>
+        <br />
+      </form>
+
+      <br /><br />
+      <h3>Your predicted insurance charges {{prediction_text}}</h3>
+    </div>
+  </body>
+</html>
