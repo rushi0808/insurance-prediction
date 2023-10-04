@@ -91,3 +91,4 @@ target/
 # Project files
 logs/
 venv/
+catboost_info/
