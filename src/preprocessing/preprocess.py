@@ -3,16 +3,63 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime
 
-from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
+import pandas as pd
 
-from src.data.make_dataset import DatasetPathConfig
+from src.exception import CustomException
+from src.logger import logging
+from src.preprocessing.preprocessobject import PreprocessorObject
+from src.utils import load_object
 
 
-class DataPreprocess:
-    def __init__(self) -> None:
-        self.datapath = DatasetPathConfig()
+@dataclass
+class PreprocessPathConfig:
+    processed_data_path = os.path.join("data", "preprocessed_data.csv")
 
-    def initiate_data_preprocess(self):
-        pass
+
+class DataPreprocessing:
+    def __init__(self, datapath, target_col_name: str):
+        self.preprocess_data_path = PreprocessPathConfig()
+        self.datapath = datapath
+        self.target_col_name = target_col_name
+
+    def initiate_preprocesor(self):
+        try:
+            start = datetime.now()
+            logging.info("Proprocessing intiated.")
+
+            df = pd.read_csv(self.datapath)
+            logging.info("Data loading completed for preprocessing")
+
+            X = df.drop(columns=self.target_col_name)
+            y = df[self.target_col_name]
+            logging.info("seperated independent and target variables.")
+
+            num_features = X.select_dtypes(exclude="object").columns
+            cate_features = X.select_dtypes(include="object").columns
+            logging.info("Seperated numeric and categorical columns.")
+
+            logging.info("Creating preprocessor.")
+            preprocess_path = PreprocessorObject(
+                num_features, cate_features
+            ).buildpreprocessor()
+
+            preprocess_obj = load_object(preprocess_path)
+
+            logging.info("Fitting data to preprocessor.")
+            X = preprocess_obj.fit_transform(X)
+
+            X = pd.DataFrame(X)
+            y = pd.DataFrame(y)
+            processed_data = pd.concat([X, y], axis=1)
+            logging.info("Storing preprocessed data.")
+            processed_data.to_csv(
+                self.preprocess_data_path.processed_data_path, index=False, header=True
+            )
+
+            end = datetime.now()
+            logging.info(f"Time taken for preprocessing: {end-start}")
+
+            return self.preprocess_data_path.processed_data_path
+
+        except Exception as e:
+            raise CustomException(e, sys)
