@@ -6,5 +6,5 @@ from src.logger import logging
 
 if __name__ == "__main__":
     data_path_obj = DatasetConfig()
-    train_path, test_path = data_path_obj.Initiat_data_config()
+    train_path, test_path = data_path_obj.initiat_data_config()
     print(train_path, test_path)

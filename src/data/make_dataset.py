@@ -22,7 +22,7 @@ class DatasetConfig:
         self.train_df: pd.DataFrame()
         self.test_df: pd.DataFrame()
 
-    def Initiat_data_config(self):
+    def initiat_data_config(self):
         try:
             start_time = datetime.now()
 
