@@ -6,20 +6,16 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 
+from src.datacollection.collect_dataset import DataPathConfig
 from src.exception import CustomException
 from src.logger import logging
 from src.preprocessing.preprocessobject import PreprocessorObject
 from src.utils import load_object
 
 
-@dataclass
-class PreprocessPathConfig:
-    processed_data_path = os.path.join("data", "preprocessed_data.csv")
-
-
 class DataPreprocessing:
     def __init__(self, datapath, target_col_name: str):
-        self.preprocess_data_path = PreprocessPathConfig()
+        self.preprocessed_data_path = DataPathConfig().preprocessed_data_path
         self.datapath = datapath
         self.target_col_name = target_col_name
 
@@ -54,13 +50,15 @@ class DataPreprocessing:
             processed_data = pd.concat([X, y], axis=1)
             logging.info("Storing preprocessed data.")
             processed_data.to_csv(
-                self.preprocess_data_path.processed_data_path, index=False, header=True
+                self.preprocessed_data_path,
+                index=False,
+                header=True,
             )
 
             end = datetime.now()
             logging.info(f"Time taken for preprocessing: {end-start}")
 
-            return self.preprocess_data_path.processed_data_path
+            return self.preprocessed_data_path
 
         except Exception as e:
             raise CustomException(e, sys)

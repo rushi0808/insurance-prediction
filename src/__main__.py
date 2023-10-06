@@ -1,6 +1,6 @@
 import sys
 
-from src.datacollection.collect_dataset import DataCollectionPath
+from src.datacollection.collect_dataset import DataPathConfig
 from src.datasampling.datasampling import DataSamplingConfig
 from src.modelstest.test_model import TestModelConfig
 from src.modelstrain.train_model import ModelConfig
@@ -8,8 +8,8 @@ from src.preprocessing.preprocess import DataPreprocessing
 
 
 def main():
-    data_path = DataCollectionPath()
-    preprocess_obj = DataPreprocessing(data_path.datapath, "charges")
+    rawdatapath = DataPathConfig().rawdatapath
+    preprocess_obj = DataPreprocessing(rawdatapath, "charges")
     preprocessed_data_path = preprocess_obj.initiate_preprocesor()
     sampling_obj = DataSamplingConfig(preprocessed_data_path)
     train_path, test_path = sampling_obj.initiat_data_config()

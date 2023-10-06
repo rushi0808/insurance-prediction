@@ -8,19 +8,15 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
+from src.datacollection.collect_dataset import DataPathConfig
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object
 
 
-@dataclass
-class PreprocessorPath:
-    preprocess_obj_path: str = os.path.join("preprocessor", "preprocessor.pkl")
-
-
 class PreprocessorObject:
     def __init__(self, num_col, cate_col):
-        self.preprocessorpath = PreprocessorPath()
+        self.preprocessor_obj_path = DataPathConfig().preprocessor_obj_path
         self.num_col = num_col
         self.cate_col = cate_col
 
@@ -51,10 +47,10 @@ class PreprocessorObject:
             )
             logging.info("Preprocessor Build complete.")
 
-            save_object(self.preprocessorpath.preprocess_obj_path, preprocessor)
+            save_object(self.preprocessor_obj_path, preprocessor)
             logging.info("Saved preprocessor.")
 
-            return self.preprocessorpath.preprocess_obj_path
+            return self.preprocessor_obj_path
 
         except Exception as e:
             raise CustomException(e, sys)

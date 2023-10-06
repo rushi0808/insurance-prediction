@@ -1,6 +1,5 @@
 import os
 import sys
-from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -11,19 +10,15 @@ from sklearn.svm import SVR
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
 
+from src.datacollection.collect_dataset import DataPathConfig
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import model_trainer
 
 
-@dataclass
-class ModelPathConfig:
-    model_results: str = os.path.join("data", "train_results.csv")
-
-
 class ModelConfig:
     def __init__(self, train_data_path: str):
-        self.model_path = ModelPathConfig()
+        self.train_models_results = DataPathConfig().train_model_results
         self.train_data_path = train_data_path
 
     def initiat_model_config(self):
@@ -91,15 +86,9 @@ class ModelConfig:
             logging.info("Models are trained.")
 
             logging.info("Storing train model results")
-            train_results.to_csv(
-                self.model_path.model_results, index=False, header=True
-            )
+            train_results.to_csv(self.train_models_results, index=False, header=True)
 
             return trained_models
 
         except Exception as e:
             raise CustomException(e, sys)
-
-
-def model_testing():
-    pass
