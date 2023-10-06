@@ -3,6 +3,7 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime
 
+import numpy as np
 import pandas as pd
 
 from src.exception import CustomException
@@ -49,7 +50,7 @@ class DataPreprocessing:
             X = preprocess_obj.fit_transform(X)
 
             X = pd.DataFrame(X)
-            y = pd.DataFrame(y)
+            y = pd.DataFrame(np.log(y))
             processed_data = pd.concat([X, y], axis=1)
             logging.info("Storing preprocessed data.")
             processed_data.to_csv(

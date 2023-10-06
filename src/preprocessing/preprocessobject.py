@@ -30,7 +30,7 @@ class PreprocessorObject:
             num_pipeline = Pipeline(
                 [
                     ("SimpleImputer", SimpleImputer(strategy="mean")),
-                    ("StandardScaler", StandardScaler()),
+                    # ("StandardScaler", StandardScaler()),
                 ]
             )
             logging.info("Created Numeric Pipeline")
