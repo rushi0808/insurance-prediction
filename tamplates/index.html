@@ -3,67 +3,207 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Insurance Charges Prediction</title>
-    <link rel="stylesheet" href="../staticFiles/style.css" />
+    <title>Insurance Premium Prediction</title>
+    <link rel="stylesheet" href="../staticFiles/index.css" />
   </head>
-
   <body>
-    <header>Insurance Charges Prediction</header>
-    <div>
-      <form action="{{url_for('predict')}}" method="post">
-        <h3>Age</h3>
-        <input
-          id="g"
-          type="text"
-          name="Age"
-          placeholder="Age"
-          required="required"
-        />
-
-        <h3>Gender</h3>
-        <select name="Gender" id="research" required="required">
-          <option value="1">Male</option>
-          <option value="0">Female</option>
-        </select>
-
-        <h3>BMI</h3>
-        <input
-          id="g"
-          type="text"
-          name="BMI"
-          placeholder="BMI"
-          required="required"
-        />
-
-        <h3>No of children</h3>
-        <input
-          id="g"
-          type="text"
-          name="no. of children"
-          placeholder="no. of children"
-          required="required"
-        />
-
-        <h3>Smoker</h3>
-        <select name="Smoker" id="research" required="required">
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-
-        <h3>Region</h3>
-        <select name="Region" id="research" required="required">
-          <option value="0">Northeast</option>
-          <option value="1">Northwest</option>
-          <option value="2">Southeast</option>
-          <option value="3">Southwest</option>
-        </select>
-
-        <br /><br /><button id="sub" type="submit">Prediction</button>
-        <br />
-      </form>
-
-      <br /><br />
-      <h3>Your predicted insurance charges {{prediction_text}}</h3>
+    <div class="title-links">
+      <div class="title">
+        <header>Insurance Premium Prediction</header>
+      </div>
+      <div class="links">
+        <nav class="navbar">
+          <a href="#home">Home</a>
+          <a href="#prediction">Prediction</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div id="home">
+      <div class="content">
+        <header class="content-header">Home</header>
+        <p class="home-title">Welcome to Insurance Premium Prediction App</p>
+        <div class="home-content">
+          <ul>
+            <li>
+              <p>
+                This is a insurance premium prediction web app based on the
+                kaggle dataset.
+              </p>
+            </li>
+            <li>
+              <p>
+                Project is based on medical insurance cost dataset from
+                <a
+                  href="https://www.kaggle.com/code/mariapushkareva/medical-insurance-cost-with-linear-regression"
+                  target="_blank"
+                  >kaggle.</a
+                >
+              </p>
+            </li>
+            <li class="variable-list">
+              <p>Perdiction is done on the bases of the data as follow:</p>
+              <ul>
+                <li><span>age:</span> age of primary beneficiary</li>
+                <li>
+                  <span>sex:</span> insurance contractor gender, female, male
+                </li>
+                <li>
+                  <span>bmi:</span> Body mass index, providing an understanding
+                  of body, weights that are relatively high or low relative to
+                  height, <br />objective index of body weight (kg / m ^ 2)
+                  using the ratio of height to weight, ideally 18.5 to 24.9
+                </li>
+                <li>
+                  <span>children:</span> Number of children covered by health
+                  insurance/Number of dependents
+                </li>
+                <li><span>smoker:</span> Smoking</li>
+                <li>
+                  <span>region:</span> the beneficiary's residential area in the
+                  US, northeast, southeast, southwest, northwest
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>
+                Data insights and visualizasion can be found in the about
+                section.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="prediction">
+      <div class="content">
+        <header class="content-header">Prediction</header>
+      </div>
+      <div class="prediction-content">
+        <form class="form">
+          <div class="prediction-input">
+            <label for="age">Enter your age:</label>
+            <input type="text" placeholder="Age" />
+            <label for="bmi">Enter your BMI:</label>
+            <input type="text" placeholder="BMI" />
+            <label for="dependents">No. of Dependants:</label>
+            <input type="text" placeholder="Dependents" />
+            <label for="gender">Select your Gender</label>
+          </div>
+          <div class="prediction-input">
+            <select name="gender" id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <label for="smoker">Do you smoke?</label>
+            <select name="smoker" id="smoker">
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+            <label for="region">Enter your region:</label>
+            <select name="region" id="region">
+              <option value="southeast">Southeast</option>
+              <option value="southwest">Southwest</option>
+              <option value="northeast">Northeast</option>
+              <option value="northwest">Northwest</option>
+            </select>
+          </div>
+          <div class="prediction-input">
+            <button type="submit" class="prediction-submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="about">
+      <div class="about-content">
+        <header class="content-header">About</header>
+      </div>
+      <div class="about-content">
+        <p class="about-title">Project details</p>
+        <ul>
+          <li><p>This project is based on regression problem.</p></li>
+          <li>
+            <p>
+              Where the problem statement is to do prediction for insurance
+              premium based on the variables like age, gender etc... <br />all
+              the variables and there details are mentioned in home section.
+            </p>
+          </li>
+          <li>
+            <p>Technology used in this project:</p>
+            <ul>
+              <li><p>Python</p></li>
+              <li><p>Pandas</p></li>
+              <li><p>Numpy</p></li>
+              <li><p>Scikit-learn</p></li>
+              <li><p>XGBoost</p></li>
+              <li><p>Catboost</p></li>
+              <li><p>Flask</p></li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              Visualisation and EDA for this project can be found
+              <a
+                target="_blank"
+                href="https://github.com/rushin236/insurance-premium-prediction/blob/main/notebooks/EDA.ipynb"
+                >here.</a
+              >
+            </p>
+          </li>
+          <li>
+            <p>
+              Preprocessing, model building and evaluation can be found
+              <a
+                target="_blank"
+                href="https://github.com/rushin236/insurance-premium-prediction/blob/main/notebooks/Model_training.ipynb"
+                >here.</a
+              >
+            </p>
+          </li>
+        </ul>
+        <p class="about-title">
+          Thank you for visiting the site hope you liked the prediction!
+        </p>
+      </div>
+    </div>
+    <div id="contact">
+      <div class="contact-content">
+        <header class="content-header">Contact</header>
+        <div class="contact-content">
+          <p class="contact-title">Contact Details</p>
+          <ul>
+            <li>
+              <p><span>Developed and Designed by: </span>Rushikesh Shinde</p>
+            </li>
+            <li>
+              <p><span>Email: </span>rushikeshshindesandesh@gmail.com</p>
+            </li>
+            <li>
+              <p>
+                <span>Github: </span
+                ><a
+                  target="_blank"
+                  href="https://github.com/rushin236/insurance-premium-prediction"
+                  >rushin236</a
+                >
+              </p>
+            </li>
+            <li>
+              <p>
+                <span>LinkedIn: </span
+                ><a
+                  target="_blank"
+                  href="https://www.linkedin.com/in/rushikeshshinde987/"
+                  >rushikeshshinde987</a
+                >
+              </p>
+            </li>
+          </ul>
+          <p class="contact-title">Connect me through above resources!</p>
+        </div>
+      </div>
     </div>
   </body>
 </html>

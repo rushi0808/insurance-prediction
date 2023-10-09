@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    background-color: antiquewhite;
+}
+.title-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(0, 30, 30);
+}
+.title-links header {
+    color: aquamarine;
+    text-align: center;
+    padding: 10px 10px;
+    font-size: 35px;
+    font-family: Arial;
+    
+}
+.title-links nav {
+    text-align: center;
+    padding: 15px;
+}
+.title-links a {
+    text-decoration: none;
+    color: aquamarine;
+    font-size: 30px;
+    font-family: Arial;
+    padding: 0px 10px;
+    transition: .15s;
+}
+.title-links a:hover {
+    padding: 15px 20px;
+    background-color: aquamarine;
+    color: rgb(0, 30, 30);
+}
+div .content-header {
+    background-color: burlywood;
+    text-align: center;
+    padding: 10px;
+    font-size: 28px;
+    font-family: cursive;
+    font-weight:bold;
+}
+#home {
+    padding-top: 59px;
+}
+#home .home-title {
+    text-align: center;
+    font-size:25px;
+    font-family:cursive;
+
+}
+.home-content p a {
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+.home-content p {
+    text-align: left;
+}
+.home-content li {
+    list-style: none;
+}
+.variable-list p {
+    margin: 2px;
+}
+.variable-list li {
+    list-style: decimal;
+    padding: 3px;
+}
+.variable-list li span {
+    font-weight: bold;
+}
+.home-content {
+    font-size: 23px;
+}
+#prediction {
+    padding-top: 59px;
+}
+.prediction-content {
+    padding: 20px;
+    font-size: 22px;
+}
+.prediction-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.prediction-input label {
+    padding: 10px;
+}
+.prediction-input input, select, button {
+    height: 30px;
+    width: 200px;
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.prediction-input button {
+    font-size: 20px;
+    margin-top: 20px;
+    color: aquamarine;
+    background-color: rgb(0, 30, 30);
+    cursor: pointer;
+}
+.prediction-input button:hover {
+    opacity: .8;
+}
+.prediction-input button:active {
+    opacity: .5;
+}
+#about {
+    padding-top: 59px;
+}
+.about-content {
+    font-size: 23px;
+}
+#about .about-title {
+    text-align: center;
+    font-family: cursive;
+    font-size: 25px;
+}
+#contact {
+    padding-top: 59px;
+    text-align: center;
+}
+#contact li {
+    list-style: none;
+}
+.contact-title {
+    text-align: center;
+    font-family: cursive;
+    font-size: 25px;
+}
