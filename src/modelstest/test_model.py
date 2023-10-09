@@ -13,8 +13,8 @@ from src.utils import model_testing, save_object
 
 
 class TestModelConfig:
-    def __init__(self, trained_models: dict):
-        self.test_data_path = DataPathConfig().test_data_path
+    def __init__(self, trained_models: dict, test_data_path):
+        self.test_data_path = test_data_path
         self.test_models_results = DataPathConfig().test_model_results
         self.best_model_path = DataPathConfig().best_model_path
         self.trained_models = trained_models

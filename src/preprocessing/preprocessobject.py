@@ -47,10 +47,7 @@ class PreprocessorObject:
             )
             logging.info("Preprocessor Build complete.")
 
-            save_object(self.preprocessor_obj_path, preprocessor)
-            logging.info("Saved preprocessor.")
-
-            return self.preprocessor_obj_path
+            return preprocessor
 
         except Exception as e:
             raise CustomException(e, sys)

@@ -15,9 +15,9 @@ def main():
     train_path, test_path = sampling_obj.initiat_data_config()
     modelconfig_obj = ModelConfig(train_path)
     trained_models = modelconfig_obj.initiat_model_config()
-    test_config_obj = TestModelConfig(trained_models)
-    test_df, best_model = test_config_obj.initiate_testing()
-    print(test_df, best_model)
+    test_config_obj = TestModelConfig(trained_models, test_path)
+    test_results, best_model = test_config_obj.initiate_testing()
+    print(test_results, best_model)
 
 
 if __name__ == "__main__":

@@ -10,12 +10,13 @@ from src.datacollection.collect_dataset import DataPathConfig
 from src.exception import CustomException
 from src.logger import logging
 from src.preprocessing.preprocessobject import PreprocessorObject
-from src.utils import load_object
+from src.utils import load_object, save_object
 
 
 class DataPreprocessing:
     def __init__(self, datapath, target_col_name: str):
         self.preprocessed_data_path = DataPathConfig().preprocessed_data_path
+        self.preprocessor_obj_path = DataPathConfig().preprocessor_obj_path
         self.datapath = datapath
         self.target_col_name = target_col_name
 
@@ -36,14 +37,13 @@ class DataPreprocessing:
             logging.info("Seperated numeric and categorical columns.")
 
             logging.info("Creating preprocessor.")
-            preprocess_path = PreprocessorObject(
+            preprocessor_obj = PreprocessorObject(
                 num_features, cate_features
             ).buildpreprocessor()
 
-            preprocess_obj = load_object(preprocess_path)
-
             logging.info("Fitting data to preprocessor.")
-            X = preprocess_obj.fit_transform(X)
+            preprocessor_obj.fit(X)
+            X = preprocessor_obj.transform(X)
 
             X = pd.DataFrame(X)
             y = pd.DataFrame(np.log(y))
@@ -54,6 +54,9 @@ class DataPreprocessing:
                 index=False,
                 header=True,
             )
+
+            save_object(self.preprocessor_obj_path, preprocessor_obj)
+            logging.info("Saved preprocessor.")
 
             end = datetime.now()
             logging.info(f"Time taken for preprocessing: {end-start}")

@@ -3,6 +3,7 @@ import pickle
 import sys
 from datetime import datetime
 
+import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_absolute_percentage_error, mean_squared_error, r2_score
 from sklearn.model_selection import GridSearchCV, cross_val_score
@@ -127,3 +128,19 @@ def model_testing(X, y, trained_models: dict):
 
     except Exception as e:
         raise CustomException(e, sys)
+
+
+def make_prediction(customer_input: dict, preprocessor_path, model_path):
+    customer_input_df = pd.DataFrame(customer_input, index=[0])
+    logging.info("Converted customer data to dataframe")
+
+    logging.info("Loading preprocessor and model")
+    preprocessor = load_object(preprocessor_path)
+    model = load_object(model_path)
+
+    logging.info("transforming data with preprocessor")
+    customer_input_processed = preprocessor.transform(customer_input_df)
+    customer_prediction = model.predict(customer_input_processed)
+    logging.info("Customer prediction completed")
+
+    return np.exp(customer_prediction)

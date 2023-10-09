@@ -81,18 +81,18 @@
         <header class="content-header">Prediction</header>
       </div>
       <div class="prediction-content">
-        <form class="form">
+        <form action="{{url_for('predict')}}" class="form" method="post">
           <div class="prediction-input">
             <label for="age">Enter your age:</label>
-            <input type="text" placeholder="Age" />
+            <input type="text" placeholder="Age" name="age" />
             <label for="bmi">Enter your BMI:</label>
-            <input type="text" placeholder="BMI" />
+            <input type="text" placeholder="BMI" name="bmi" />
             <label for="dependents">No. of Dependants:</label>
-            <input type="text" placeholder="Dependents" />
+            <input type="number" placeholder="Dependents" name="children" />
             <label for="gender">Select your Gender</label>
           </div>
           <div class="prediction-input">
-            <select name="gender" id="gender">
+            <select name="sex" id="gender">
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
@@ -113,6 +113,7 @@
             <button type="submit" class="prediction-submit">Submit</button>
           </div>
         </form>
+        <div class="prediction">{{ customer_prediction }}</div>
       </div>
     </div>
     <div id="about">

@@ -138,3 +138,11 @@ div .content-header {
     font-family: cursive;
     font-size: 25px;
 }
+.prediction {
+    padding-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: cursive;
+}
