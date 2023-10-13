@@ -92,3 +92,5 @@ target/
 logs/
 venv/
 catboost_info/
+*.png
+~$*.pptx
