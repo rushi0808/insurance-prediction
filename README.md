@@ -2,10 +2,10 @@
 
 This project revolves around solving a Machine Learning Regression Problem to accurately predict insurance charges. The primary objectives of this project are as follows:
 
-To predict insurance charges with high accuracy, facilitating efficient cost analysis for the company.
-To minimize the time and operational expenses required for analyzing customer information and determining charges.
-To automate the process, creating a hassle-free experience for customers.
-You can visit the site for making predictions here.
+- To predict insurance charges with high accuracy, facilitating efficient cost analysis for the company.
+- To minimize the time and operational expenses required for analyzing customer information and determining charges.
+- To automate the process, creating a hassle-free experience for customers.
+- You can visit the site for making predictions [here]().
 
 ## Methods Used:
 
