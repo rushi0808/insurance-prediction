@@ -22,6 +22,8 @@ This project revolves around solving a Machine Learning Regression Problem to ac
 - Numpy
 - Jupyter-notebook
 - Scikit-learn
+- XGBoost
+- CatBoost
 - HTML
 - CSS
 - Flask
