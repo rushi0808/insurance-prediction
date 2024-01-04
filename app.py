@@ -1,11 +1,16 @@
 import os
 import sys
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 
 from src.pipeline.prediction_pipeline import PredictionPipeline
 
 app = Flask(__name__, template_folder="template", static_folder="staticFiles")
+
+
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory('static', filename)
 
 
 @app.route("/")
