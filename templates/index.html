@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Insurance Premium Prediction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css' ) }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css' ) }}" />
   </head>
 
   <body>
@@ -80,7 +80,7 @@
         <header class="content-header">Prediction</header>
       </div>
       <div class="prediction-content">
-        <form action="{{url_for('predict')}}" class="form" method="post">
+        <form action="/" class="form" method="post">
           <div class="prediction-input">
             <label for="age">Enter your age:</label>
             <input type="text" placeholder="Age" name="age" />
